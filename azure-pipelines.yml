@@ -1,12 +1,15 @@
 pool:
-  vmImage: ubuntu-16.04
+  vmImage: ubuntu-18.04
+  demands: npm
+
 trigger:
   - master
+
 steps:
   - task: Npm@1
     displayName: 'npm install'
     inputs:
-      verbose: false
+      verbose: true
   - script: 'npm test'
     displayName: 'Run unit tests'
     continueOnError: true
